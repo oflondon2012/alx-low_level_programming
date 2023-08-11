@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<unistd.h>
 /**
  * main - Program that prints the size of various types on the computer
  * Return: Always 0 (Success)
