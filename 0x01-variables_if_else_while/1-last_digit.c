@@ -2,15 +2,15 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main - Thi program c n the last digit of given number
- * 
+ * main - Thi program c n the last digit of given numb
+ *
  * Return: Always 0 (Success)
  */
 
 int main(void)
 {
 	int n;
-	
+
 	int j;
 
 	srand(time(0));
