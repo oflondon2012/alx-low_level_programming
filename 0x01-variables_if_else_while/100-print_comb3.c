@@ -13,10 +13,16 @@ int main(void)
 	{
 		for (k = j + 1; k < 10; k++)
 		{
-			putchar('0' + j);
-			putchar('0' + k);
-			putchar(',');
-			putchar(' ');
+			if (k > j)
+			{
+				putchar('0' + j);
+				putchar('0' + k);
+				if (j != 8 || k != 9)
+				{
+					putchar(',');
+					putchar(' ');
+				}
+			}
 		}
 	}
 	putchar('\n');
