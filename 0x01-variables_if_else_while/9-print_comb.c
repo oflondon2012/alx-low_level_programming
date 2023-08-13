@@ -14,7 +14,7 @@ int main(void)
 		putchar(j);
 		if (j != 57)
 		{
-			putchar('.');
+			putchar(',');
 			putchar(' ');
 		}
 	}
