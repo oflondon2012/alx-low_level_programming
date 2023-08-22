@@ -18,6 +18,6 @@ int main(void)
 		}
 		j++;
 	}
-	printf("%\n", nsum);
+	printf("%d\n", nsum);
 	return (0);
 }
