@@ -16,7 +16,7 @@ int main(void)
 		{
 			nsum = nsum + j;
 		}
-		j++,
+		j++;
 	}
 	printf("%\n", nsum);
 	return (0);
