@@ -4,7 +4,7 @@
  * _strncpy - function that copies a string
  * @dest: destination varible to copy into
  * @src: source varible to copy from
- * $n: input variable for comparison
+ * @n: input variable for comparison
  *
  * Return: destination value
  */
