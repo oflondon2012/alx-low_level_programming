@@ -15,7 +15,7 @@ char *rot13(char *j)
 
 	for (i = 0; j[i] != '\0'; i++)
 	{
-		for (k = 0; k < 52; k++)
+		for (k = 0; ch1[k]; k++)
 		{
 			if (j[i] == ch1[k])
 			{
