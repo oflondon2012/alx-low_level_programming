@@ -9,21 +9,19 @@
 
 char *leet(char *j)
 {
-	int i = 0, k = 0;
+	int i, k;
 	char ch1[] = "aAeEoOtTlL";
 	char ch2[] = "4433007711";
 
-	while (j[i] != '\0')
+	for (i = 0; j[i] != '\0'; i++)
 	{
-		while (k < 10)
+		for (k = 0; k < 10; k++)
 		{
 			if (j[i] == ch1[k])
 			{
 				j[i] = ch2[k];
 			}
-			k++;
 		}
-		j++;
 	}
 	return (j);
 }
