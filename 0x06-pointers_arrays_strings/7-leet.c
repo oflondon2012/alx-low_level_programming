@@ -10,7 +10,7 @@
 char *leet(char *j)
 {
 	int i = 0, k = 0;
-	char ch1[] = "aAeEoOtTiI";
+	char ch1[] = "aAeEoOtTlL";
 	char ch2[] = "4433007711";
 
 	while (j[i] != '\0')
