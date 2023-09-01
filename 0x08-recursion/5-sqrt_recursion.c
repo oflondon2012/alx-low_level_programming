@@ -16,7 +16,7 @@ int sqrt_op(int j, int k)
 	}
 	else if (k * k == j)
 	{
-		return (j);
+		return (k);
 	}
 	return (sqrt_op(j, k + 1));
 }
