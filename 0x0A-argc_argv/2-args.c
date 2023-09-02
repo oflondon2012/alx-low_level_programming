@@ -8,4 +8,6 @@
  * Return: Aways 0 (success)
  */
 
-
+int main()
+{
+}
