@@ -19,7 +19,7 @@ char *create_array(unsigned int size, char c)
 	pointt = (char *)malloc(size * sizeof(char));
 	if (pointt == 0)
 		return (NULL);
-	for (j = 1; j <= size; j++)
+	for (j = 0; j < size; j++)
 	{
 		pointt[j] = c;
 	}
