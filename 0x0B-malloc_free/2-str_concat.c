@@ -29,6 +29,7 @@ char *str_concat(char *s1, char *s2)
 	cptr = (char *)malloc((j + k + 1) * sizeof(char));
 	if (cptr == NULL)
 	{
+		free(cptr);
 		return (NULL);
 	}
 	while (i < j)
@@ -38,8 +39,8 @@ char *str_concat(char *s1, char *s2)
 	}
 	while (l < k)
 	{
-		cptr[i] = s2[k];
-		k++;
+		cptr[i] = s2[l];
+		l++;
 		i++;
 	}
 	return (cptr);
