@@ -6,7 +6,6 @@
  * @grid: array integer
  * @height: grid height
  *
- * Return: void
  */
 
 void free_grid(int **grid, int height)
