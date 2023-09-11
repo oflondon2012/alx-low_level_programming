@@ -3,7 +3,8 @@
 
 /**
  * struct dog - structure that create dog information
- * @nme: name of diff dog
+ *
+ * @name: name of diff dog
  * @age: variable for age
  * @owner: owner info
  *
