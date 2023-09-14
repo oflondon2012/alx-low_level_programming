@@ -5,7 +5,7 @@
  *
  * @array: pointer to an integer array
  * @size: size of the array element
- * cmp: pointer to the function use to compare value
+ * @cmp: pointer to the function use to compare value
  *
  * Return: -1 if size <= 0 and if not element
  */
