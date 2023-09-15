@@ -10,6 +10,7 @@ void print_all(const char * const format, ...)
 	char *stg;
 	int j = 0;
 	char *sepa = "";
+
 	va_list pall;
 
 	va_start(pall, format);
@@ -20,21 +21,21 @@ void print_all(const char * const format, ...)
 		{
 			switch (format[j])
 			{
-				case 'i':
-					printf("%s%d", sepa, va_arg(pall, int));
-				break;
 				case 'c':
 					printf("%s%c", sepa, va_arg(pall, int));
-				break;
+					break;
+				case 'i':
+					printf("%s%d", sepa, va_arg(pall, int));
+					break;
 				case 'f':
 					printf("%s%f", sepa, va_arg(pall, double));
-				break;
+					break;
 				case 's':
 					stg = va_arg(pall, char *);
 					if (stg == NULL)
 						stg = "nil";
 					printf("%s%s", sepa, stg);
-				break;
+					break;
 				default:
 					j++;
 					continue;
