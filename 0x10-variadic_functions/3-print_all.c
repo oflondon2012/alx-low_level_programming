@@ -9,7 +9,7 @@ void print_all(const char * const format, ...)
 {
 	char *stg;
 	int j = 0;
-	char *sepa = "";
+	char *sepa = " ";
 
 	va_list pall;
 
@@ -40,7 +40,7 @@ void print_all(const char * const format, ...)
 					j++;
 					continue;
 			}
-			sepa = ",";
+			sepa = ", ";
 			j++;
 		}
 	}
