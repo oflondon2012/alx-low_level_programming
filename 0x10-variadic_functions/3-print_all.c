@@ -1,9 +1,10 @@
 #include "variadic_functions.h"
+
 /**
- * print_all - function that prints anything
- * @format: list of augument type
+ * print_all - function that print anything
+ * @format: th specifier
  *
- * Return: void
+ * Return: anything given to print
  */
 
 void print_all(const char * const format, ...)
@@ -15,7 +16,7 @@ void print_all(const char * const format, ...)
 
 	va_start(pall, format);
 
-		while (format[j])
+		while (format[j] != '\0' && format != NULL)
 		{
 			switch (format[j])
 			{
