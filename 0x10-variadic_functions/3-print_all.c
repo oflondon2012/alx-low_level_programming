@@ -2,48 +2,49 @@
 /**
  * print_all - function that prints anything
  * @format: list of augument type
+ *
  * Return: void
  */
 
 void print_all(const char * const format, ...)
 {
 	char *stg;
-	int j = 0;
-	char *sepa = " ";
+	int j = 0, spchk;
 
 	va_list pall;
 
 	va_start(pall, format);
 
-	if (format)
-	{
 		while (format[j])
 		{
 			switch (format[j])
 			{
 				case 'c':
-					printf("%s%c", sepa, va_arg(pall, int));
+					printf("%c", va_arg(pall, int));
+					spchk = 0;
 					break;
 				case 'i':
-					printf("%s%d", sepa, va_arg(pall, int));
+					printf("%d", va_arg(pall, int));
+					spchk = 0;
 					break;
 				case 'f':
-					printf("%s%f", sepa, va_arg(pall, double));
+					printf("%f", va_arg(pall, double));
+					spchk = 0;
 					break;
 				case 's':
 					stg = va_arg(pall, char *);
 					if (stg == NULL)
 						stg = "(nil)";
-					printf("%s%s", sepa, stg);
+					printf("%s", stg);
 					break;
 				default:
-					j++;
-					continue;
+					spchk = 1;
+					break;
 			}
-			sepa = ", ";
+			if (format[j + 1] != '\0' && spchk == 0)
+				printf(", ");
 			j++;
 		}
-	}
 	printf("\n");
 	va_end(pall);
 }
