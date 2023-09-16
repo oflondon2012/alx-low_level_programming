@@ -11,11 +11,9 @@ void print_all(const char * const format, ...)
 {
 	char *stg;
 	int j = 0, spchk;
-
 	va_list pall;
 
 	va_start(pall, format);
-
 		while (format[j] != '\0' && format != NULL)
 		{
 			switch (format[j])
