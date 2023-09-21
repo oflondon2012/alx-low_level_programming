@@ -6,13 +6,13 @@
 #include <string.h>
 
 /**
- *  * struct list_s - singly linked list
- *   * @str: string variable
- *    * @len: lenght of the given string
- *     * @next: point at the next node in the list
- *      *
- *       * Desc: this represent the singly linked list structure
- *        */
+ * struct list_s - singly linked list
+ * @str: string variable
+ * @len: lenght of the given string
+ * @next: point at the next node in the list
+ *
+ * Desc: this represent the singly linked list structure
+ */
 
 typedef struct list_s
 {
