@@ -7,13 +7,13 @@
  * Return: number of nodes in the list
  */
 
-size_t list_len(const list_t h)
+size_t list_len(const list_t *h)
 {
 	int numb;
 
 	if (h == NULL)
 		return (0);
-	for (num = 1; h->next != NULL; num++)
-		h = h->nexts;
-	return (sum);
+	for (numb = 1; h->next != NULL; numb++)
+		h = h->next;
+	return (numb);
 }
