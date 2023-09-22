@@ -30,7 +30,6 @@ list_t *add_node(list_t **head, const char *str)
 /**
  * len - get the lenght of the given string
  * @str: string to get the lenght
- *
  * Return: lenght of the string
  */
 int len(const char *str)
