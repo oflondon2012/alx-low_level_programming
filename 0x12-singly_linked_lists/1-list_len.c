@@ -7,7 +7,7 @@
  * Return: number of nodes in the list
  */
 
-size_t list_len(const list_ h)
+size_t list_len(const list_t h)
 {
 	int numb;
 
