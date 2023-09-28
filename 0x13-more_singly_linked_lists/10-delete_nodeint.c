@@ -3,7 +3,7 @@
 /**
  * delete_nodeint_at_index - function that delete node at any index
  * @head: pointer to first node on list
- * @: index: index to delete
+ * @index: index to delete
  *
  * Return: 1 if it succeded -1 if failed
  */
