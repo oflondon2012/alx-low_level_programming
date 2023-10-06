@@ -63,12 +63,12 @@ void error_handling_file(int file_from, int file_to, char *argv[])
 {
 	if (file_from == -1)
 	{
-		fprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
+		fprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	if (file_to == -1)
 	{
-		fprintf(stderr, "Error: Can't write to file %s\n", argv[2]);
+		fprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 		exit(99);
 	}
 }
