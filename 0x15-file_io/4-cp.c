@@ -2,11 +2,10 @@
 #include <stdio.h>
 void error_handling_file(int file_from, int file_to, char *argv[]);
 /**
- * error_handling_file - function that check if a file can
- * be opened or closed and handle errors
+ * error_handling_file - function that check if a file open or close
  * @file_from: pointing to name of file
  * @file_to: either close  or open
- * @argv: vector argument
+ * @argv: vector argumentgcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-cp.c -o cp
  *
  * Return: void
  */
