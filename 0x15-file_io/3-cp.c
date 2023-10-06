@@ -32,8 +32,6 @@ int main(int argc, char *argv[])
 		sdw = write(file_to, buff, cha);
 		if (sdw == -1)
 			error_handling_file(0, -1, argv);
-		if (cha == 0)
-			break;
 	}
 	if (close(file_from) == -1)
 	{
