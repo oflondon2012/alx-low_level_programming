@@ -2,6 +2,28 @@
 #include <stdio.h>
 void error_handling_file(int file_from, int file_to, char *argv[]);
 /**
+ * error_handling_file - function that check if a file can
+ * be opened or closed and handle errors
+ * @file_from: pointing to name of file
+ * @file_to: either close  or open
+ * @argv: vector argument
+ *
+ * Return: void
+ */
+void error_handling_file(int file_from, int file_to, char *argv[])
+{
+	if (file_from == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		exit(99);
+	}
+}
+/**
  * main - Program that copies the content of a file to another file
  * @argc: count of argument
  * @argv: vector of argument
@@ -44,26 +66,4 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 	return (0);
-}
-/**
- * error_handling_file - function that check if a file can
- * be opened or closed and handle errors
- * @file_from: pointing to name of file
- * @file_to: either close  or open
- * @argv: vector argument
- *
- * Return: void
- */
-void error_handling_file(int file_from, int file_to, char *argv[])
-{
-	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	if (file_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-		exit(99);
-	}
 }
