@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	error_handling_file(file_from, file_to, argv);
 	cha = 0;
-	while ((cha =read(file_from, buff, sizeof(buff))) > 0)
+	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
 	{
 		if (cha == -1)
 			error_handling_file(-1, 0, argv);
@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
-
 /**
  * error_handling_file - function that check if a file can
  * be opened or closed and handle errors
