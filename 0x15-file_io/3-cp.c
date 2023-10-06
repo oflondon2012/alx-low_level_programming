@@ -33,16 +33,20 @@ int main(int argc, char *argv[])
 		sdw = write(file_to, buff, cha);
 		if (sdw == -1)
 			error_handling_file(0, -1, argv);
-		if (cha == 0)
-			break;
 	}
 
 	close_error = close(file_from);
 	if (close_error == -1)
-		error_handling_file(-1, 0, argv);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
 	close_error = close(file_to);
 	if (close_error == -1)
-		error_handling_file(0, -1, argv);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
+		exit(100);
+	}
 	return (0);
 }
 
