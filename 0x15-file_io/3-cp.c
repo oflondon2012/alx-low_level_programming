@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
 	int file_from, file_to;
 	char buff[1024];
-	ssize_t cha = 0, sdw;
+	ssize_t cha = 1024, sdw;
 
 	if (argc != 3)
 	{
@@ -23,19 +23,14 @@ int main(int argc, char *argv[])
 	file_from = open(argv[1], O_RDONLY);
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	error_handling_file(file_from, file_to, argv);
-	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
+	while (cha == 1024)
 	{
-		sdw = write(file_to, buff, cha);
+		cha = read(file_from, buff, 1024);
+		if (cha == -1)
+			error_handling_file(-1, 0, argv);
+		sdw = write(file_to, buff, 1024);
 		if (sdw == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
-			exit(99);
-		}
-	}
-	if (cha == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+			error_handling_file(0, -1, argv);
 	}
 	if (close(file_from) == -1)
 	{
