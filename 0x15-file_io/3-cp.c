@@ -25,13 +25,15 @@ int main(int argc, char *argv[])
 	if (file_from == -1 || file_to == -1)
 		error_handling_file(file_from, file_to, argv);
 	cha = 0;
-	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
+	while ((cha = read(file_from, buff, sizeof(buff))) >= 0)
 	{
 		if (cha == -1)
 			error_handling_file(-1, 0, argv);
 		sdw = write(file_to, buff, cha);
 		if (sdw == -1)
 			error_handling_file(0, -1, argv);
+		if (cha == 0)
+			break;
 	}
 	if (close(file_from) == -1)
 	{
