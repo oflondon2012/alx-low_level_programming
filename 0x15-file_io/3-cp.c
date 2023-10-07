@@ -30,10 +30,7 @@ int main(int argc, char *argv[])
 		if (sdw == -1)
 			error_handling_file(0, -1, argv);
 		if (cha == 0)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read %d\n", file_from);
-			exit(98);
-		}
+			break;
 	}
 	if (close(file_from) == -1)
 	{
