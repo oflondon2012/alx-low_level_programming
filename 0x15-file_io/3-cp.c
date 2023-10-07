@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	if (file_from == -1 || file_to == -1)
 		error_handling_file(file_from, file_to, argv);
-	cha = 0;
 	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
 	{
 		if (cha == -1)
