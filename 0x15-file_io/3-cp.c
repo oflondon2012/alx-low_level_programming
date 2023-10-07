@@ -1,19 +1,17 @@
 #include "main.h"
 #include <stdio.h>
 void error_handling_file(int file_from, int file_to, char *argv[]);
-
 /**
  * main - Program that copies the content of a file to another file
  * @argc: count of argument
  * @argv: vector of argument
- *
  * Return: 0 if successful
  */
 int main(int argc, char *argv[])
 {
 	int file_from, file_to;
 	char buff[1024];
-	ssize_t sdw, cha;
+	ssize_t sdw, cha = 0;
 
 	if (argc != 3)
 	{
@@ -24,7 +22,7 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	if (file_from == -1 || file_to == -1)
 		error_handling_file(file_from, file_to, argv);
-	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
+	while ((cha = read(file_from, buff, sizeof(buff))) >= 0)
 	{
 		if (cha == -1)
 			error_handling_file(-1, 0, argv);
