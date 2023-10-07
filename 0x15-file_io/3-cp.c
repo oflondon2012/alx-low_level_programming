@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		if (cha == 0)
 			break;
 	}
-	if (file_from == '\0')
+	if (sdw == '\0')
 	{
 		dprintf(STDERR_FILENO, "Errpr: Can't read fd %d\n", file_from);
 		exit(98);
