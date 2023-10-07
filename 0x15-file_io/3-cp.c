@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	if (file_from == -1 || file_to == -1)
 		error_handling_file(file_from, file_to, argv);
 	cha = 0;
-	while ((cha = read(file_from, buff, sizeof(buff))) >= 0)
+	while ((cha = read(file_from, buff, sizeof(buff))) > 0)
 	{
 		if (cha == -1)
 			error_handling_file(-1, 0, argv);
