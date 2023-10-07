@@ -32,11 +32,6 @@ int main(int argc, char *argv[])
 		if (cha == 0)
 			break;
 	}
-	if (sdw == '\0')
-	{
-		dprintf(STDERR_FILENO, "Errpr: Can't read fd %d\n", file_from);
-		exit(98);
-	}
 	if (close(file_from) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read fd %d\n", file_from);
