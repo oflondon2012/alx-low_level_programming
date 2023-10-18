@@ -15,7 +15,7 @@ void ge_execute(char **strg)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		perror(ge_getenv("-"));
+		perror(ge_getenviron("-"));
 		exit(EXIT_FAILURE);
 	}
 	if (child_pid == 0)
@@ -44,23 +44,23 @@ char **ge_splitString(char *strg, const char *delim)
 	copy = ge_strdup(strg);
 	if (copy == NULL)
 	{
-		perror(ge_getenv("-"));
+		perror(ge_getenviron("-"));
 		return (NULL);
 	}
 	token = strtok(copy, delim);
 	while (token)
 	{
-		array = re_realloc(array, sizeof(char *) * (wn + 1));
+		array = ge_realloc(array, sizeof(char *) * wn, sizeof(char *) * (wn + 1));
 		if (array == NULL)
 		{
-			perror(ge_getenv("-"));
+			perror(ge_getenviron("-"));
 			free(copy);
 			return (NULL);
 		}
 		array[wn] = ge_strdup(token);
 		if (array[wn] == NULL)
 		{
-			perror(ge_getenv("-"));
+			perror(ge_getenviron("-"));
 			free(copy);
 			return (NULL);
 		}
@@ -100,12 +100,12 @@ void ge_freestrg(char **strg)
  *
  * Return: new size pointer
  */
-void *ge_realloc(void *strgptr, unsigned int oldsize, unsigned int newsize)
+void *ge_realloc(void *strgptr, size_t oldsize, size_t newsize)
 {
-	char *oldptr, newptr;
-	unsigned int i;
+	char *oldptr = (char *)strgptr, *newptr;
+	size_t i;
 
-	if (newsize == 0 && strgptr != NULL)
+	if (newsize == 0)
 	{
 		free(strgptr);
 		return (NULL);
@@ -120,7 +120,6 @@ void *ge_realloc(void *strgptr, unsigned int oldsize, unsigned int newsize)
 		free(strgptr);
 		return (NULL);
 	}
-	oldsize = strgptr;
 	if (newsize > oldsize)
 	{
 		for (i = 0; i < oldsize; i++)

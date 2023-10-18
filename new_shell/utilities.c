@@ -22,7 +22,7 @@ void ge_environ(char **argv __attribute__ ((unused)))
 */
 void ge_exit(char **ards)
 {
-	int status = 0;
+	int status = 0, i;
 
 	if (ards[1])
 	{
@@ -32,7 +32,7 @@ void ge_exit(char **ards)
 			status = 2;
 		}
 	}
-	for (int i = 0; ards[i]; i++)
+	for (i = 0; ards[i]; i++)
 	{
 		free(ards[i]);
 	}

@@ -62,7 +62,7 @@ void ge_handleEOF(int lenn, char *buf)
 {
 	if (lenn == -1)
 	{
-		if (ge_term(STDIN_FILENO))
+		if (isatty(STDIN_FILENO))
 		{
 			ge_puts("\n");
 			free(buf);

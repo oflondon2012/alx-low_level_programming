@@ -9,7 +9,7 @@
 list_path *ge_lnpath(char *spath)
 {
 	list_path *head = NULL;
-	char cpath, token;
+	char *cpath, *token;
 
 	if (spath == NULL)
 		return (NULL);
@@ -41,7 +41,7 @@ list_path *ge_add_node(list_path **head, char *dir)
 
 	if (!new_node || !dir)
 		return (NULL);
-	new_node->dir = dir;
+	new_node->dir = ge_strdup(dir);
 	new_node->po = NULL;
 	if (!*head)
 		*head = new_node;

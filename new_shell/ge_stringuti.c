@@ -67,7 +67,7 @@ size_t ge_strlen(const char *strg)
  * Return: pointer of the string
  *
  */
-char ge_strdup(char *strg)
+char *ge_strdup(char *strg)
 {
 	size_t j, len = ge_strlen(strg);
 	char *duplicate = malloc(len + 1);

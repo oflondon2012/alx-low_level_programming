@@ -49,7 +49,7 @@ int main(void)
 			else if (pathname)
 			{
 				free(arv[0]);
-				strg[0] = pathname;
+				arv[0] = pathname;
 				ge_execute(arv);
 			}
 		}

@@ -19,7 +19,7 @@ extern char **environ;
 int ge_myputchar(char strg);
 void ge_puts(char *strg);
 
-char ge_strdup(char *strg);
+char *ge_strdup(char *strg);
 char *ge_concat_str(const char *name, const char *sepa, const char *value);
 size_t ge_strlen(const char *strg);
 
@@ -41,7 +41,7 @@ void ge_signal_c(int sig_num);
 
 char **ge_splitString(char *strg, const char *delim);
 void ge_execute(char **strg);
-void *ge_realloc(void *strgptr, unsigned int oldsize, unsigned int newsize);
+void *ge_realloc(void *strgptr, size_t oldsize, size_t newsize);
 void ge_freestrg(char **strg);
 
 /**
@@ -64,6 +64,7 @@ void ge_environ(char **argv __attribute__ ((unused)));
 void ge_exit(char **ards);
 int ge_atoi(char *strg);
 void ge_setenviron(char **strg);
+void ge_unsetenv(char **strg);
 
 void ge_term(void);
 
