@@ -12,8 +12,8 @@ char *ge_concat_str(const char *name, const char *sepa, const char *value)
 	size_t len_name = ge_strlen(name);
 	size_t len_sepa = ge_strlen(sepa);
 	size_t len_value = ge_strlen(value);
-	size_t total_length = len_name + len_sepa + len_ value;
-	char *result = malloc(total_lenght + 1);
+	size_t total_length = len_name + len_sepa + len_value;
+	char *result = malloc(total_length + 1);
 	size_t i, j = 0;
 
 	if (!result)
@@ -79,7 +79,7 @@ char ge_strdup(char *strg)
 		perror(ge_getenviron("-"));
 		return (NULL);
 	}
-	for (j = 0, j <= len; j++)
+	for (j = 0; j <= len; j++)
 		duplicate[j] = strg[j];
 	return (duplicate);
 }

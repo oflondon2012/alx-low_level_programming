@@ -16,7 +16,6 @@ void ge_environ(char **argv __attribute__ ((unused)))
 		ge_puts("\n");
 	}
 }
-
 /**
 * ge_exit - exits the program with an optional status code
 * @ards: an array of arguments, including the command itself
@@ -40,14 +39,12 @@ void ge_exit(char **ards)
 	free(ards);
 	exit(status);
 }
-
 /**
  * ge_atoi - converts a string into an integer number
  * @strg: pointer to the input string
  *
  * Return: the converted integer
  */
-
 int ge_atoi(char *strg)
 {
 	int i = 0, result = 0, sign = 1;
@@ -105,10 +102,8 @@ void ge_setenviron(char **strg)
 	}
 	if (!environ[i])
 	{
-
 		environ[i] = ge_concat_str(strg[1], "=", strg[2]);
-		environ[i + 1] = '\0';
-
+		environ[i + 1] = NULL;
 	}
 }
 

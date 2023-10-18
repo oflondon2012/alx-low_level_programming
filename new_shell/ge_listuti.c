@@ -50,7 +50,7 @@ list_path *ge_add_node(list_path **head, char *dir)
 		temp = *head;
 		while (temp->po)
 			temp = temp->po;
-		temp->p = new_node;
+		temp->po = new_node;
 	}
 	return (*head);
 }
@@ -64,14 +64,14 @@ list_path *ge_add_node(list_path **head, char *dir)
 void ge_freelist(list_path *ptolink)
 {
 	list_path *cur = ptolink;
-	list_path temp;
+	list_path *temp;
 
 	while (cur)
 	{
 		temp = cur;
 		cur = cur->po;
 		free(temp->dir);
-		free(temp);
+		free(ptolink);
 	}
 }
 
@@ -86,13 +86,13 @@ char *ge_pathname(char *filename, list_path *head)
 {
 	struct stat st;
 	char *full_path;
-	list_path *curr_dir = head;
+	list_path *cur_dir = head;
 
 	while (cur_dir)
 	{
 		full_path = ge_concat_str(cur_dir->dir, "/", filename);
 		if (stat(full_path, &st) == 0)
-			return (full_name);
+			return (full_path);
 		free(full_path);
 		cur_dir = cur_dir->po;
 	}

@@ -19,7 +19,7 @@ void(*ge_buildin_check(char **strg))(char **strg)
 	};
 	while (T[i].name)
 	{
-		while (T[i].name[j] == strg[0][j])
+		while (T[i].name[j] == strg[0][j] && T[i].name[j] != '\0')
 		{
 			if (T[i].name[j] == '\0')
 				return (T[i].func);

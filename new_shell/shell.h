@@ -17,13 +17,13 @@
 extern char **environ;
 
 int ge_myputchar(char strg);
-void ge_puts(char strg);
+void ge_puts(char *strg);
 
 char ge_strdup(char *strg);
 char *ge_concat_str(const char *name, const char *sepa, const char *value);
 size_t ge_strlen(const char *strg);
 
-void(*ge_buildin_check(char **strg))(char **strg)
+void(*ge_buildin_check(char **strg))(char **strg);
 /**
  * struct GeBuildin - structure to represent a build-in command
  * @name: the command to execute
