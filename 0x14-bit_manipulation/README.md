@@ -1,1 +1,0 @@
-Readme of bit manipulation
