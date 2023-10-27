@@ -5,9 +5,8 @@
  * @n: first int number
  * @m: second int number
  *
- * Return: number of bit to flip
+ * Return: int number of bit to flip
  */
-
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	unsigned long int xor_ans = n ^ m;

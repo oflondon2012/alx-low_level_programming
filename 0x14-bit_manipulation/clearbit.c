@@ -5,9 +5,8 @@
  * @n: pointer to the compute number
  * @index: index to where to set the bit
  *
- * Return: 1 on success or -1 if fails
+ * Return: 1 on success or -1 if error occured
  */
-
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int sbit = 1;

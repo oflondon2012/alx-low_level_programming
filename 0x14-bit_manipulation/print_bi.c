@@ -7,7 +7,6 @@
  *
  * Return: power of given number
  */
-
 unsigned long int po_wer(unsigned int b, unsigned int p)
 {
 	unsigned int i = 1;
@@ -20,6 +19,7 @@ unsigned long int po_wer(unsigned int b, unsigned int p)
 	}
 	return (number);
 }
+
 /**
  * print_binary - function that prints the binary representation of a number
  * @n: number of binary rep to print

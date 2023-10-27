@@ -5,9 +5,8 @@
  * @n: pointer to number to compute
  * @index: where to set bit
  *
- * Return: 1 on success -1 if failled
+ * Return: 1 on success or -1 if failled
  */
-
 int set_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int sbit = 1;
