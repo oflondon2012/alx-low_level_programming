@@ -9,7 +9,7 @@
  */
 void print_exit(int error_code, const char *mess)
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", mess);
+	dprintf(2, "Error: %s\n", mess);
 	exit(error_code);
 }
 /**
