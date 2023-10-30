@@ -68,7 +68,6 @@ void copy_file(const char *file_from, const char *file_to)
 
 	input_fd = open_file(file_from, O_RDONLY, 0664);
 	output_fd = open_file(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-
 	while ((bread = read(input_fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		bwrite = write(output_fd, buffer, bread);
