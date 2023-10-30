@@ -1,19 +1,5 @@
 #include "main.h"
 /**
- * main - program that copy content of a file to another
- * @argc: argument
- * @argv: array of argument value
- *
- * Return: (0) on success
- */
-int main(int argc, char *argv[])
-{
-	if (argc != 3)
-		printErExit(97, "Usage: cp file_from file_to");
-	copy_file(argv[1], argv[2]);
-	return (0);
-}
-/**
  * printErExit - functiont to display error message and exit
  * with an error code
  * @error_code: the error code to display from the stream
@@ -78,4 +64,18 @@ void copy_file(const char *file_from, const char *file_to)
 		printErExit(98, "Can't read from file");
 	close_file(input_fd);
 	close_file(output_fd);
+}
+/**
+ * main - program that copy content of a file to another
+ * @argc: number of argument
+ * @argv: array of argument value
+ *
+ * Return: (0) on success
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 3)
+		printErExit(97, "Usage: cp file_from file_to");
+	copy_file(argv[1], argv[2]);
+	return (0);
 }
