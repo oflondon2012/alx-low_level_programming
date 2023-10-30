@@ -1,54 +1,33 @@
 #include "main.h"
 /**
- * print_error - functiont to display error message and exit
- * with an error code
- * @error_code: the error code to display from the stream
- * @mess: message from the error
- *
- * Retuen: void
- */
-void print_error(int error_code, const char *mess, ...)
-{
-	va_list args;
-
-	va_start(args, mess);
-
-	dprintf(2, "Error: ");
-	vdprintf(2, mess, args);
-	dprintf(2, "\n");
-	va_end(args);
-
-	exit(error_code);
-}
-/**
  * copy_file - function that copy file to another file
  * @file_from: from where to copy from
  * @file_to: the desctination to copy to
+ * @argv: the argument vector
  *
  * Return: void
  */
-void copy_file(const char *file_from, const char *file_to)
+void copy_file(int file_from, int file_to, char *argv[])
 {
-	int input_fd, output_fd;
 	char buffer[1024];
-	ssize_t bread, bwrite;
+	ssize_t numchar, numwr;
 
-	input_fd = open(file_from, O_RDONLY, 0664);
-	output_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (output_fd == -1)
-		print_error(99, "Error: Can't write to file %s", file_to);
-	while ((bread = read(input_fd, buffer, 1024)) > 0)
+	numchar = 1024;
+	while (numchar == 1024)
 	{
-		bwrite = write(output_fd, buffer, bread);
-		if (bwrite != bread)
-			print_error(99, "Error: Can't write to file", file_to);
+		numchar = read(file_from, buffer, 1024);
+		if (numchar == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+			exit(98);
+		}
+		numwr = write(file_to, buffer, numchar);
+		if (numwr == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 	}
-	if (bread == -1)
-		print_error(98, "Error: Can't read from file");
-	if (close(input_fd == -1))
-		print_error(100, "Error: Can't close fd %d", input_fd);
-	if (close(output_fd) == -1)
-		print_error(100, "Error: Can't close fd %d", output_fd);
 }
 /**
  * main - program that copy content of a file to another
@@ -57,10 +36,39 @@ void copy_file(const char *file_from, const char *file_to)
  *
  * Return: (0) on success
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+	int file1, file2, erclose;
+
 	if (argc != 3)
-		print_error(97, "Usage: cp file_from file_to");
-	copy_file(argv[1], argv[2]);
+	{
+		dprintf(STDERR_FILENO, "%s\n", "Usage: cp file_from file_to");
+		exit(97);
+	}
+	file1 = open(argv[1], O_RDONLY);
+	file2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
+	if (file1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
+		exit(98);
+	}
+	if (file2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write %s\n", argv[2]);
+		exit(99);
+	}
+	copy_file(file1, file2, argv);
+	erclose = close(file1);
+	if (erclose == 1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file1);
+		exit(100);
+	}
+	erclose = close(file2);
+	if (erclose == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file2);
+		exit(100);
+	}
 	return (0);
 }
