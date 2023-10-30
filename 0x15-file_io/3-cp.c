@@ -1,43 +1,24 @@
 #include "main.h"
 /**
- * print_exit - functiont to display error message and exit
+ * print_error - functiont to display error message and exit
  * with an error code
  * @error_code: the error code to display from the stream
  * @mess: message from the error
  *
  * Retuen: void
  */
-void print_exit(int error_code, const char *mess)
+void print_error(int error_code, const char *mess, ...)
 {
-	dprintf(2, "Error: %s\n", mess);
-	exit(error_code);
-}
-/**
- * open_file - function that open file for reading
- * @filename: name of the file to open
- * @flags: file flag
- * @mode: file mode
- *
- * Return: file description
- */
-int open_file(const char *filename, int flags, mode_t mode)
-{
-	int fd = open(filename, flags, mode);
+	va_list args;
 
-	if (fd == -1)
-		print_exit(98, "Error: Can't read from file");
-	return (fd);
-}
-/**
- * close_file - function to close the open file
- * @file_desc: file descriptor
- *
- * Return: void
- */
-void close_file(int file_desc)
-{
-	if (close(file_desc) == -1)
-		print_exit(100, "Can't close fd");
+	va_start(args, mess);
+
+	dprintf(2, "Error: ");
+	vdprintf(2, mess, args);
+	dprintf(2, "\n");
+	va_end(args);
+
+	exit(error_code);
 }
 /**
  * copy_file - function that copy file to another file
@@ -49,21 +30,25 @@ void close_file(int file_desc)
 void copy_file(const char *file_from, const char *file_to)
 {
 	int input_fd, output_fd;
-	char buffer[BUFFER_SIZE];
+	char buffer[1024];
 	ssize_t bread, bwrite;
 
-	input_fd = open_file(file_from, O_RDONLY, 0664);
-	output_fd = open_file(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	while ((bread = read(input_fd, buffer, BUFFER_SIZE)) > 0)
+	input_fd = open(file_from, O_RDONLY, 0664);
+	output_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (output_fd == -1)
+		print_error(99, "Error: Can't write to file %s", file_to);
+	while ((bread = read(input_fd, buffer, 1024)) > 0)
 	{
 		bwrite = write(output_fd, buffer, bread);
 		if (bwrite != bread)
-			print_exit(99, "Can't write to file");
+			print_error(99, "Error: Can't write to file", file_to);
 	}
 	if (bread == -1)
-		print_exit(98, "Can't read from file");
-	close_file(input_fd);
-	close_file(output_fd);
+		print_error(98, "Error: Can't read from file");
+	if (close(input_fd == -1))
+		print_error(100, "Error: Can't close fd %d", input_fd);
+	if (close(output_fd) == -1)
+		print_error(100, "Error: Can't close fd %d", output_fd);
 }
 /**
  * main - program that copy content of a file to another
@@ -75,7 +60,7 @@ void copy_file(const char *file_from, const char *file_to)
 int main(int argc, char *argv[])
 {
 	if (argc != 3)
-		print_exit(97, "Usage: cp file_from file_to");
+		print_error(97, "Usage: cp file_from file_to");
 	copy_file(argv[1], argv[2]);
 	return (0);
 }
