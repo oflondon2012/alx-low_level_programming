@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * printErExit - functiont to display error message and exit
+ * print_exit - functiont to display error message and exit
  * with an error code
  * @error_code: the error code to display from the stream
  * @mess: message from the error
  *
  * Retuen: void
  */
-void printErExit(int error_code, const char *mess)
+void print_exit(int error_code, const char *mess)
 {
 	dprintf(STDERR_FILENO, "Error: %s\n", mess);
 	exit(error_code);
@@ -25,7 +25,7 @@ int open_file(const char *filename, int flags, mode_t mode)
 	int fd = open(filename, flags, mode);
 
 	if (fd == -1)
-		printErExit(98, "Error: Can't read from file");
+		print_exit(98, "Error: Can't read from file");
 	return (fd);
 }
 /**
@@ -37,7 +37,7 @@ int open_file(const char *filename, int flags, mode_t mode)
 void close_file(int file_desc)
 {
 	if (close(file_desc) == -1)
-		printErExit(100, "Can't close fd");
+		print_exit(100, "Can't close fd");
 }
 /**
  * copy_file - function that copy file to another file
@@ -58,10 +58,10 @@ void copy_file(const char *file_from, const char *file_to)
 	{
 		bwrite = write(output_fd, buffer, bread);
 		if (bwrite != bread)
-			printErExit(99, "Can't write to file");
+			print_exit(99, "Can't write to file");
 	}
 	if (bread == -1)
-		printErExit(98, "Can't read from file");
+		print_exit(98, "Can't read from file");
 	close_file(input_fd);
 	close_file(output_fd);
 }
@@ -75,7 +75,7 @@ void copy_file(const char *file_from, const char *file_to)
 int main(int argc, char *argv[])
 {
 	if (argc != 3)
-		printErExit(97, "Usage: cp file_from file_to");
+		print_exit(97, "Usage: cp file_from file_to");
 	copy_file(argv[1], argv[2]);
 	return (0);
 }
