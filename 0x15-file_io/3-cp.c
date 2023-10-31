@@ -17,7 +17,7 @@ void copy_file(int file_from, int file_to, char *argv[])
 		numchar = read(file_from, buffer, 1024);
 		if (numchar == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
 		numwr = write(file_to, buffer, numchar);
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	file2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	if (file1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	if (file2 == -1)
