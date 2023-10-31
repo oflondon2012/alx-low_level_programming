@@ -2,9 +2,8 @@
 /**
  * copy_file - function that copy file to another file
  * @file_from: from where to copy from
- * @file_to: the desctination to copy to
+ * @file_to: the desctination to copy toi
  * @argv: the argument vector
- *
  * Return: void
  */
 void copy_file(int file_from, int file_to, char *argv[])
@@ -33,7 +32,6 @@ void copy_file(int file_from, int file_to, char *argv[])
  * main - program that copy content of a file to another
  * @argc: number of argument
  * @argv: array of argument value
- *
  * Return: (0) on success
  */
 int main(int argc, char **argv)
