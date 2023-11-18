@@ -47,7 +47,7 @@ void print_elf_header_info(Elf64_Ehdr *header)
 			(header->e_type == ET_EXEC) ?
 			"EXEC (Executable file)" :
 			(header->e_type == ET_DYN) ? "DYN (Shared object file)" :
-			(header->e_type == ET_REL) ? "REL (Relocatable file)" : "Other");
+			(header->e_type == ET_REL) ? "REL (Relocatable file)" : "UNIX - NetBSD");
 	printf("  Entry point address:                0x%lx\n", header->e_entry);
 }
 /**
