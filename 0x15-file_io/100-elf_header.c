@@ -36,16 +36,16 @@ void print_elf_header_info(Elf64_Ehdr *header)
 	abi_str = (header->e_ident[EI_OSABI] == ELFOSABI_SYSV) ? "UNIX - System V" :
 	"Other";
 
-	printf("Class:		%s\n", class_str);
-	printf("Data:		%s\n", data_str);
-	printf("Version:	%d (current)\n", header->e_ident[EI_VERSION]);
-	printf("OS/ABI:		%s\n", abi_str);
-	printf("ABI Version:		%d\n", header->e_ident[EI_ABIVERSION]);
+	printf("  Class:      %s\n", class_str);
+	printf("  Data:	      %s\n", data_str);
+	printf("  Version:	%d (current)\n", header->e_ident[EI_VERSION]);
+	printf("  OS/ABI:		%s\n", abi_str);
+	printf("  ABI Version:		%d\n", header->e_ident[EI_ABIVERSION]);
 	printf("  Type:		%s\n", (header->e_type == ET_EXEC) ?
 			"EXEC (Executable file)" :
 			(header->e_type == ET_DYN) ? "DYN (Shared object file)" :
 			(header->e_type == ET_REL) ? "REL (Relocatable file)" : "Other");
-	printf("Entry point address:	0x%lx\n", header->e_entry);
+	printf("  Entry point address:   0x%lx\n", header->e_entry);
 }
 /**
  * main - main function
