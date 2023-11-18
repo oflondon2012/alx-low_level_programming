@@ -34,7 +34,7 @@ void print_elf_header_info(Elf64_Ehdr *header)
 	data_str = (header->e_ident[EI_DATA] == ELFDATA2LSB) ?
 	"2's complement, little-endian" : "2's complement, big-endian";
 	abi_str = (header->e_ident[EI_OSABI] == ELFOSABI_SYSV) ? "UNIX - System V" :
-	"Other";
+	"UNIX - NetBSD";
 
 	printf("  Class:                             %s\n", class_str);
 	printf("  Data:	                             %s\n", data_str);
